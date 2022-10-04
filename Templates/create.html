@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Create a User</title>
+{% endblock %}
+
+{% block content %}
+<div class="mt-5">
+    <a href="/users" class="btn btn-outline-dark">Show All Users</a>
+</div>
+
+<div class="mt-2">
+    <h1>Create a User</h1>
+</div>
+
+<div class="pt-3">
+    <form action="/users/new" method="post" style="max-width: 500px;">
+        <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" id="first_name" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" name="last_name" id="last_name" required class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Image URL</label>
+            <input type="url" name="image_url" id="image_url" class="form-control">
+        </div>
+        <button class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}

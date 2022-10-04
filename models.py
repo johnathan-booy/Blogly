@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-missing_user_image_url = "https://www.google.com/url?sa=i&url=https%3A%2F%2Fpixabay.com%2Fvectors%2Fblank-profile-picture-mystery-man-973460%2F&psig=AOvVaw0QevVd3crsKhFu-CGDtXhC&ust=1664988488925000&source=images&cd=vfe&ved=0CAkQjRxqFwoTCMjpktSDx_oCFQAAAAAdAAAAABAD"
+missing_user_image_url = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
 
 
 def connect_db(app):
@@ -23,3 +23,7 @@ class User(db.Model):
     last_name = db.Column(db.String(30), nullable=False)
     image_url = db.Column(db.String(), nullable=True,
                           default=missing_user_image_url)
+
+    @property
+    def full_name(self):
+        return f"{self.first_name} {self.last_name}"
