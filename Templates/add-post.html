@@ -9,7 +9,7 @@
     <h1>Add Post for {{user.full_name}}</h1>
 </div>
 
-<div class="pt-3">
+<div id="add-post-form">
     <form style="max-width: 500px;">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -22,8 +22,6 @@
 
         <button formaction="/users/{{user.id}}/posts/new" formmethod="post" class="btn btn-success">Add Post</button>
         <button formaction="/users/{{user.id}}" formmethod="get" class="btn btn-outline-primary">Cancel</button>
-
     </form>
-
 </div>
 {% endblock %}
