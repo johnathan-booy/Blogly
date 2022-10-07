@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{user.full_name}} Details</title>
+{% endblock %}
+
+{% block content %}
+<div class="row mt-3">
+    <div class="col-2">
+        {% if user.image_url %}
+        <img src="{{user.image_url}}" alt="Profile Photo" class="img-thumbnail">
+        {% else %}
+        <img src="https://exoffender.org/wp-content/uploads/2016/09/empty-profile.png" alt="Profile Photo"
+            class="img-thumbnail">
+        {% endif %}
+    </div>
+    <div class="col-auto d-flex flex flex-column justify-content-center align-items-center">
+        <div>
+            <h1>{{user.full_name}}</h1>
+            <form>
+                <button class="btn btn-sm btn-primary" formaction="/users/{{user.id}}/edit"
+                    formmethod="GET">Edit</button>
+                <button class="btn btn-sm btn-danger" formaction="/users/{{user.id}}/delete"
+                    formmethod="POST">Delete</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<div class="mt-4">
+    <h3>Posts</h3>
+
+    <div class="mt-2">
+        {% if posts %}
+        <div class="list-group">
+            {% for post in posts %}
+            <a href="/posts/{{post.id}}" class="list-group-item list-group-item-action">{{post.title}}</a>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p><i>No user posts</i></p>
+        {% endif %}
+    </div>
+
+    <a href="/users/{{user.id}}/posts/new" class="btn btn-sm btn-primary mt-2">Add Post</a>
+</div>
+{% endblock %}
