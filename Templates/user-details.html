@@ -35,7 +35,14 @@
         {% if posts %}
         <div class="list-group">
             {% for post in posts %}
-            <a href="/posts/{{post.id}}" class="list-group-item list-group-item-action">{{post.title}}</a>
+            <a href="/posts/{{post.id}}" class="list-group-item list-group-item-action">
+                <div class="d-flex justify-content-between">
+                    <span>{{post.title}}</span>
+                    {% if post.tags_quantity %}
+                    <span class="badge bg-warning">{{post.tags_quantity}}</span>
+                    {% endif %}
+                </div>
+            </a>
             {% endfor %}
         </div>
         {% else %}
@@ -43,6 +50,6 @@
         {% endif %}
     </div>
 
-    <a href="/users/{{user.id}}/posts/new" class="btn btn-sm btn-primary mt-2">Add Post</a>
+    <a href="/users/{{user.id}}/posts/new" class="btn btn-sm btn-success mt-2">Add Post</a>
 </div>
 {% endblock %}

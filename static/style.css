@@ -19,3 +19,8 @@ nav {
 	width: 80%;
 	max-width: 550px;
 }
+
+textarea {
+	resize: none;
+	min-width: 100%;
+}

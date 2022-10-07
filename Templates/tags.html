@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Tags</title>
+{% endblock %}
+
+{% block content %}
+<h1>Tags</h1>
+
+<div class="mt-3">
+    {% if tags %}
+    <div class="list-group">
+        {% for tag in tags %}
+        <a href="/tags/{{tag.id}}" class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between">
+                <span>{{tag.name.title()}}</span>
+                <span class="badge bg-secondary">{{tag.posts_quantity}}</span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p><i>No tags available</i></p>
+    {% endif %}
+</div>
+
+<div class="pt-3">
+    <a href="/tags/new" class="btn btn-success">Create a Tag</a>
+</div>
+{% endblock %}

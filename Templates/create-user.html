@@ -8,7 +8,7 @@
 <h1>Create a User</h1>
 
 <div class="pt-3">
-    <form action="/users/new" method="post">
+    <form>
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name</label>
             <input type="text" name="first_name" id="first_name" required class="form-control">
@@ -21,7 +21,8 @@
             <label for="image_url" class="form-label">Image URL</label>
             <input type="url" name="image_url" id="image_url" class="form-control">
         </div>
-        <button class="btn btn-primary">Submit</button>
+        <button formaction="/users/new" formmethod="post" class="btn btn-success">Create</button>
+        <button formaction="/users" formmethod="get" class="btn btn-outline-dark">Cancel</button>
     </form>
 </div>
 {% endblock %}

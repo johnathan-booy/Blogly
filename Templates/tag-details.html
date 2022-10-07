@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>{{tag.name.title()}}</title>
+{% endblock %}
+
+{% block content %}
+<h1>{{tag.name.title()}}</h1>
+
+<div class="mt-3">
+    {% if posts %}
+    <div class="list-group">
+        {% for post in posts %}
+        <a href="/posts/{{post.id}}" class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between">
+                <span>{{post.title}}</span>
+                <span><small class="fst-italic text-muted">{{post.user.full_name}}</small></span>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p><i>No posts available</i></p>
+    {% endif %}
+</div>
+
+<div class="pt-3">
+    <form>
+        <button class="btn btn-sm btn-primary" formaction="/tags/{{tag.id}}/edit" formmethod="GET">Edit</button>
+        <button class="btn btn-sm btn-danger" formaction="/tags/{{tag.id}}/delete" formmethod="POST">Delete</button>
+    </form>
+</div>
+{% endblock %}

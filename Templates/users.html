@@ -11,7 +11,12 @@
     {% if users %}
     <div class="list-group">
         {% for user in users %}
-        <a href="/users/{{user.id}}" class="list-group-item list-group-item-action">{{user.full_name}}</a>
+        <a href="/users/{{user.id}}" class="list-group-item list-group-item-action">
+            <div class="d-flex justify-content-between">
+                <span>{{user.full_name}}</span>
+                <span class="badge bg-secondary">{{user.posts_quantity}}</span>
+            </div>
+        </a>
         {% endfor %}
     </div>
     {% else %}
@@ -20,6 +25,6 @@
 </div>
 
 <div class="pt-3">
-    <a href="/users/new" class="btn btn-primary">Create New User</a>
+    <a href="/users/new" class="btn btn-success">Create New User</a>
 </div>
 {% endblock %}
